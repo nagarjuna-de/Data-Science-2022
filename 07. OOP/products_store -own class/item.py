@@ -1,4 +1,5 @@
 import csv
+from msilib.schema import Property
 class Item:
     pay_rate = 0.8 # The customer need to pay after 20% discount - class attributes
     all = []
@@ -9,12 +10,20 @@ class Item:
         assert quantity>=0, f"Quantity {quantity} is not greater/equal to 0"
 
         # Assign to self object or Instance
-        self.name = name # instance attributes
+        self.__name = name # instance attributes
         self.price = price
         self.quantity = quantity
 
         # Actions to execute
         Item.all.append(self)
+
+    @property
+    def name(self):
+        return self.__name
+
+    #@name.setter
+    #def name(self, new_name):
+     #   self.__name = new_name
 
         
     def calculate_total_price (self):
@@ -36,5 +45,7 @@ class Item:
                 quantity=int(item.get('quantity')),
             )
     
+
+
     def __repr__(self):
         return f"Item('{self.name}', {self.price},{self.quantity})"
