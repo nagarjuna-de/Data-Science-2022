@@ -113,7 +113,7 @@ num_vars = ['t1','t2','hum','wind_speed']
 x_train, x_val, y_train, y_val = model_selection.train_test_split(x, y,
                                     test_size=0.2,
                                     random_state=0  # Recommended for reproducibility
-                                )
+##                                )
 
 
 

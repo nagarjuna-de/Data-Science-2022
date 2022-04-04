@@ -2,10 +2,10 @@ from os import pardir
 import pandas as pd
 import numpy as np
 
-data = pd.read_csv("climate.csv")
+data = pd.read_csv(r"C:\Users\rnr31\Documents\GitHub\Ravella_DS22_Strive_School_Excercises\02.Chapter\12. TimeSeries\climate.csv")
 data = data.drop(["Date Time"], axis=1)
 
-def pairing(data, seq_len=6):
+def pairing(pth, seq_len=6):
 
     x = []
     y = []
@@ -21,15 +21,9 @@ def pairing(data, seq_len=6):
         x.append(seq.flatten())  # flattening the matrix and appending it to the x list
         y.append( data["T (degC)"][i+seq_len] )  # appending the target to the y list 
 
+
     return np.array(x), np.array(y)
 
-print(data.shape)
 
 x, y = pairing(data)
 
-print(x.shape)
-
-print(y[0])
-print(y[1])
-
-print("heheh")
